@@ -104,6 +104,39 @@ console.log(validProposal(
 
 
 
+function  calculateSleepTime( times ) {
+    let totalSecond = 0;
+    let hour = 0;
+    let min = 0;
+    let sec = 0;
+    if(!Array.isArray(times)){
+        return "Invalid";
+    }
+
+    for (let i = 0; i < times.length; i++) {
+        if (typeof times[i] !== 'number' || times[i] <= 0) {
+            return "Invalid";
+        }
+    }
+
+    for(const time of times){
+        totalSecond = totalSecond + time;
+        hour = Math.floor(totalSecond / 3600);
+        min = Math.floor((totalSecond % 3600) / 60);
+        sec = totalSecond % 60;
+    }
+    
+
+    return {hour: hour,minute: min,second: sec};
+}
+
+
+console.log(calculateSleepTime([3600, 1800, 600]));  
+
+console.log(calculateSleepTime([-500, 300]));  
+
+
+
 
 
 
