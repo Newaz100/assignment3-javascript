@@ -68,6 +68,41 @@ console.log(willSuccess([30, 40, 20, 50]));
 
 
 
+function  validProposal( person1 , person2 ){
+    if (
+        typeof person1 !== "object" || person1 === null ||
+        typeof person2 !== "object" || person2 === null ||
+        typeof person1.name !== "string" || typeof person2.name !== "string" ||
+        typeof person1.age !== "number" || person1.age < 0 ||
+        typeof person2.age !== "number" || person2.age < 0 ||
+        (person1.gender !== "male" && person1.gender !== "female") ||
+        (person2.gender !== "male" && person2.gender !== "female")
+    ){
+        
+            return "Invalid";
+    }
+    
+    if (person1.gender !== person2.gender && Math.abs(person1.age - person2.age) <= 7) {
+            return true;
+    }
+
+    return false;
+}
+
+
+
+console.log(validProposal(
+    { name: "Alice", age: 25, gender: "female" }, 
+    { name: "Bob", age: 30, gender: "male" }
+));  
+
+
+console.log(validProposal(
+    { name: "Charlie", age: 40, gender: "male" }, 
+    { name: "David", age: 25, gender: "male" }
+));  
+
+
 
 
 
